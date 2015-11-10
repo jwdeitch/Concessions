@@ -1,0 +1,33 @@
+{
+  "name": "spiral/application",
+  "description": "Spiral Application",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Wolfy-J",
+      "email": "wolfy-j@spiralscout.com"
+    }
+  ],
+  "require": {
+    "spiral/framework": "*",
+    "spiral/profiler": "*",
+    "spiral/toolkit": "*"
+  },
+  "recommend": {
+    "spiral/images": "*",
+    "spiral/redis": "*"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php webroot/index.php configure -v --key"
+    ],
+    "post-update-cmd": [
+      "php webroot/index.php configure"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "": "application/classes/"
+    }
+  }
+}
