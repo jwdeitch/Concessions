@@ -17,8 +17,9 @@ class Attachments extends DocumentEntity
      */
     protected $schema = [
         'uploaded_by' => 'mongoId',
-        'created_on' => 'MongoDate',
-        'type' => 'string',
-        'size' => 'string'
+        'created_on'  => 'MongoDate',
+        'type'        => 'string',
+        'size'        => 'string',
+        'path'        => 'string'
     ];
 }

@@ -6,10 +6,12 @@
  */
 namespace Database;
 
+use Spiral\Models\Traits\TimestampsTrait;
 use Spiral\ODM\Document;
 
 class StoryBlock extends Document
 {
+    use TimestampsTrait;
     /**
      * @var array
      */
@@ -27,6 +29,7 @@ class StoryBlock extends Document
      */
     protected $schema = [
         'id'              => 'mongoId',
+        'timeCreated'     => 'MongoDate',
         'title'           => 'string',
         'description'     => 'string',
         'forecastedHours' => 'int',

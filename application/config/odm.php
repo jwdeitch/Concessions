@@ -24,7 +24,7 @@ return [
         'default' => [
             'server'    => 'mongodb://localhost:27017',
             'profiling' => MongoDatabase::PROFILE_SIMPLE,
-            'database'  => 'spiral',
+            'database'  => 'concessions_production',
             'options'   => [
                 'connect' => true
             ]

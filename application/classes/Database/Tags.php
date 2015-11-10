@@ -10,12 +10,17 @@ use Spiral\ODM\DocumentEntity;
 
 class Tags extends DocumentEntity
 {
+
+    protected $fillable = [
+        'name'
+    ];
+
     /**
      * DocumentEntity schema.
      *
      * @var array
      */
     protected $schema = [
-        'name'           => 'string',
+        'name' => 'string',
     ];
 }

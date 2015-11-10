@@ -8,6 +8,9 @@
  */
 namespace Controllers;
 
+use Database\StoryBlock;
+use Database\Tags;
+use Database\Tasks;
 use Spiral\Core\Controller;
 use Spiral\Http\Responses\RedirectResponse;
 use Spiral\Http\Routing\Router;
@@ -21,7 +24,29 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        return $this->views->render('welcome');
+        return $this->views->render( 'welcome' );
+    }
+
+    public function testAction()
+    {
+        $sb = new StoryBlock();
+        $sb->title = 'Title';
+        $sb->description = 'description';
+        $sb->forecastedHours = 120;
+        $sb->submitterId = new \MongoId();
+        $sb->notes = 'testNote';
+        $sb->tags = new Tags( [
+            'name' => 'testTag'
+        ] );
+        $sb->tasks = new Tasks( [
+            'assignedTo' => new \MongoId(),
+            'timeEst'    => 10,
+            'created_on' => new \MongoDate(),
+            'comments'   => 'testComment',
+            'accepted'   => 'false'
+        ] );
+
+        $sb->save();
     }
 
     /**
@@ -33,8 +58,14 @@ class HomeController extends Controller
     {
         return [
             'status' => 200,
-            'data' => [
-                1, 2, 3, 4, 5, 6, 7,
+            'data'   => [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
             ]
         ];
     }
@@ -46,7 +77,7 @@ class HomeController extends Controller
      */
     public function redirectAction()
     {
-        return new RedirectResponse('http://google.com/');
+        return new RedirectResponse( 'http://google.com/' );
     }
 
     /**
@@ -54,8 +85,8 @@ class HomeController extends Controller
      *
      * @return RedirectResponse
      */
-    public function internalRedirectAction(Router $router)
+    public function internalRedirectAction( Router $router )
     {
-        return new RedirectResponse($router->createUri('jsonRoute'));
+        return new RedirectResponse( $router->createUri( 'jsonRoute' ) );
     }
 }

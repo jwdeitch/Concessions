@@ -17,9 +17,9 @@ class Tasks extends DocumentEntity
      */
     protected $schema = [
         'assignedTo' => 'string',
-        'timeEst' => 'int',
+        'timeEst'    => 'int',
         'created_on' => 'MongoDate',
-        'comments' => 'string',
-        'accepted' => 'bool'
+        'comments'   => 'string',
+        'accepted'   => 'bool'
     ];
 }
