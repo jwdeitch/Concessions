@@ -11,7 +11,8 @@
   "require": {
     "spiral/framework": "*",
     "spiral/profiler": "*",
-    "spiral/toolkit": "*"
+    "spiral/toolkit": "*",
+    "fzaninotto/faker": "~1.0"
   },
   "recommend": {
     "spiral/images": "*",

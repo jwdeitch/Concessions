@@ -29,21 +29,23 @@ class HomeController extends Controller
 
     public function testAction()
     {
+        $faker = \Faker\Factory::create();
+
         $sb = new StoryBlock();
-        $sb->title = 'Title';
-        $sb->description = 'description';
+        $sb->title = $faker->sentence(6);
+        $sb->description = $faker->text;
         $sb->forecastedHours = 120;
         $sb->submitterId = new \MongoId();
-        $sb->notes = 'testNote';
+        $sb->notes = $faker->text;
         $sb->tags = new Tags( [
-            'name' => 'testTag'
+            'name' => $faker->sentence(1)
         ] );
         $sb->tasks = new Tasks( [
             'assignedTo' => new \MongoId(),
             'timeEst'    => 10,
             'created_on' => new \MongoDate(),
-            'comments'   => 'testComment',
-            'accepted'   => 'false'
+            'comments'   => $faker->sentence(20),
+            'accepted'   => true
         ] );
 
         $sb->save();
