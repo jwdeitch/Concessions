@@ -23,6 +23,10 @@ class ApiController extends Controller
         return 'index';
     }
 
+    public function getAction() {
+        return StoryBlock::find()->jsonSerialize();
+    }
+
     public function testAction()
     {
         $faker = \Faker\Factory::create();
@@ -30,14 +34,25 @@ class ApiController extends Controller
         $sb = new StoryBlock();
         $sb->title = $faker->sentence( 6 );
         $sb->description = $faker->text;
-        $sb->forecastedHours = 120;
+        $sb->totalPredicted = 120;
         $sb->priority = 1;
         $sb->log = 'back';
+        $sb->caseName = 'DE1837';
+        $sb->caseColor = 'orange';
         $sb->submitterId = new \MongoId();
         $sb->notes = $faker->text;
-        $sb->tags = new Tags( [
-            'name' => $faker->sentence( 1 )
-        ] );
+        $sb->tags->push(new Tags( [
+            'name' => 'Ops',
+            'color' => 'red'
+        ] ));
+        $sb->tags->push(new Tags( [
+            'name' => 'Development',
+            'color' => 'purple'
+        ] ));
+        $sb->tags->push(new Tags( [
+            'name' => 'QA',
+            'color' => 'green'
+        ] ));
         $sb->tasks = new Tasks( [
             'assignedTo' => new \MongoId(),
             'timeEst'    => 10,
@@ -51,7 +66,7 @@ class ApiController extends Controller
 
     public function retrieveAction()
     {
-        return dump(StoryBlock::findOne());
+        return dump(StoryBlock::findOne()->serializeData());
     }
 
 

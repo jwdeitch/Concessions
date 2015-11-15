@@ -21,6 +21,7 @@ class Tags extends DocumentEntity
      * @var array
      */
     protected $schema = [
-        'name' => 'string',
+        'name'  => 'string',
+        'color' => 'string'
     ];
 }

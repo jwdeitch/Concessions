@@ -28,19 +28,20 @@ class StoryBlock extends Document
      * @var array
      */
     protected $schema = [
-        'id'              => 'mongoId',
-        'timeCreated'     => 'MongoDate',
-        'title'           => 'string',
-        'description'     => 'string',
-        'log'             => 'string',
-        'forecastedHours' => 'int',
-        'currentHours'    => 'int',
-        'priority'        => 'int',
-        'submitterId'     => 'mongoId',
-        'notes'           => 'string',
-        'tags'            => [ Tags::class ],
-        'tasks'           => [ Tasks::class ],
-        'attachments'     => [ Attachments::class ],
+        'id'             => 'mongoId',
+        'title'          => 'string',
+        'description'    => 'string',
+        'log'            => 'string',
+        'totalPredicted' => 'int',
+        'totalCompleted' => 'int',
+        'priority'       => 'int',
+        'submitterId'    => 'mongoId',
+        'notes'          => 'string',
+        'caseName'       => 'string',
+        'caseColor'      => 'string',
+        'tags'           => [ Tags::class ],
+        'tasks'          => [ Tasks::class ],
+        'attachments'    => [ Attachments::class ],
     ];
 
     protected $defaults = [
